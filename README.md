@@ -15,7 +15,8 @@ An AI-powered legal document analysis tool that extracts key clauses like **Term
 - HTML/CSS/JS
 
 ## 📸 Screenshot
-![App Screenshot](screenshot.png)  <!-- Add a real screenshot! -->
+![image](https://github.com/user-attachments/assets/a964840a-b6d5-4f45-83a1-3c26428591ef)
+ <!-- Add a real screenshot! -->
 
 ## 🧪 How to Run
 ```bash
