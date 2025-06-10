@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LegalDoc Summarizer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+
+    .box {
+      background: #fff;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 10px;
+      box-shadow: 0 0 5px #ccc;
+    }
+
+    h2, h3 {
+      color: #333;
+    }
+
+    form {
+      margin-bottom: 20px;
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 5px #ccc;
+    }
+
+    input[type="file"] {
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 8px 16px;
+      border: none;
+      background-color: #0984e3;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #74b9ff;
+    }
+
+    #loading {
+      display: none;
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #ffeaa7;
+      color: #2d3436;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Upload Legal Document (PDF)</h2>
+  <form action="/" method="post" enctype="multipart/form-data">
+    <input type="file" name="pdf" accept=".pdf" required>
+    <br>
+    <button type="submit">Analyze</button>
+    <div id="loading">Processing your legal document... Please wait.</div>
+  </form>
+
+ {% if result is not none %}
+  {% if result %}
+    <h3>Summarized Clauses:</h3>
+    {% for clause, summary in result.items() %}
+      <div class="box">
+        <strong>{{ clause }}</strong><br>
+        <p>{{ summary }}</p>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>No legal clauses found in the uploaded document. Try using a different legal PDF.</p>
+  {% endif %}
+{% endif %}
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
